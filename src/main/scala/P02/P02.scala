@@ -13,8 +13,13 @@ object P02 extends App {
   val data = Seq(
     (None, 0),
     (None, 1),
-    (Some(2), None),
+    (Some(2), 0),
     (None, 1),
     (Some(4), 1)).toDF("id", "group")
+
+    data
+      .na
+      .drop
+      .show
 
 }

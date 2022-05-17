@@ -20,7 +20,7 @@ object P01 extends App {
     (1, null),
     (1, null),
     (2, "Mr"),
-    (3, null)).toDF("ID", "PREFIX")
+    (3, null)).toDF("UNIQUE_GUEST_ID", "PREFIX")
 
 //  input.groupBy($"UNIQUE_GUEST_ID").agg(max($"PREFIX")).show
   input.groupBy($"UNIQUE_GUEST_ID").agg(count($"PREFIX")).as("PREFIX")
@@ -34,7 +34,7 @@ object P01 extends App {
     .agg(max(struct($"count(PREFIX)",$"PREFIX"))).show
 
   input
-    .groupBy($"ID", $"PREFIX")
+    .groupBy($"UNIQUE_GUEST_ID", $"PREFIX")
     .agg(
       count($"PREFIX").as("Occ"))
     .groupBy($"PREFIX")
